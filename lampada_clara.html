@@ -1,0 +1,100 @@
+<!-- Vamos criar um site que a lampada acende e apague -->
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>maria clara light buld</title>
+<!-- serve para criar a estilização da pagina, forma local -->
+    <style>
+        :root {
+            --eu-maria: #072f47;
+            --enzo: #840844;
+            --ari: #cc0f0f;
+
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        body {
+            background-color: var(--enzo);
+            background-image: linear-gradient(to top, var(--eu-maria), var(--enzo));
+            background-attachment: fixed;
+        }
+
+        header,
+        section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        button {
+            width: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>
+            lâmpada
+        </h1>
+    </header>
+    <section>
+        <div>
+            <img src="./img/lamp_off.jpeg" alt="lâmpada OFF" id="lamp">
+        </div>
+
+        <div>
+            <button id="turnOn">ligar</button>
+            <button id="turnOff">Desligar</button>
+        </div>
+    </section>
+</body>
+
+
+<script>
+      /*
+      isso são variaveis
+      */
+    const turnOn = document.getElementById('turnOn');
+    const turnOff = document.getElementById('turnOff');
+    const lamp = document.getElementById('lamp');
+       /*
+       isso são variaveis
+       */
+
+    function isLampBroKen() {
+        return lamp.src.indexOf('quebrada') > -1
+    }
+     //erro d digitação
+    function lampOn() {
+        if (!isLampBroKen()) {
+            lamp.src = './img/lamp_on.jpeg';
+        }
+    }
+    function lampOff() {
+        lamp.src = './img/lamp_off.jpeg';
+    }
+
+    function LampBroken() {
+        lamp.src = './img/lamp_broke.jpeg';
+    }
+    turnOn.addEventListener('click', lampOn);
+    turnOff.addEventListener('click', lampOff);
+    lamp.addEventListener('mouseover', lampOn);
+    lamp.addEventListener('mouseleave', lampOff);
+    lamp.addEventListener('dblclick', lampBroken);
+    
+
+</script>
+
+</html>
+

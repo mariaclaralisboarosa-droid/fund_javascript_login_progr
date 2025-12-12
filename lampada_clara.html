@@ -1,30 +1,26 @@
-<!-- Vamos criar um site que a lampada acende e apague -->
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>maria clara light buld</title>
-<!-- serve para criar a estilização da pagina, forma local -->
-    <style>
+    <title>light_buld</title>
+<style>
         :root {
-            --eu-maria: #072f47;
-            --enzo: #840844;
-            --ari: #cc0f0f;
-
+            --gabriel: rgb(255, 196, 0);
+            --ster: rgb(255, 225, 142);
+            --nicolas: rgb(210, 212, 74);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-
         }
 
         body {
-            background-color: var(--enzo);
-            background-image: linear-gradient(to top, var(--eu-maria), var(--enzo));
+            background: var(--ster);
+            background-image: linear-gradient(to top,
+                    var(--gabriel), var(--nicolas));
             background-attachment: fixed;
         }
 
@@ -43,58 +39,54 @@
 
 <body>
     <header>
-        <h1>
-            lâmpada
-        </h1>
+        <h1>Lâmpada</h1>
     </header>
     <section>
         <div>
-            <img src="./img/lamp_off.jpeg" alt="lâmpada OFF" id="lamp">
+            <img src="./img/lamp_off.jpeg" 
+            alt="Lâmpada Off" id='lamp'>
         </div>
 
         <div>
-            <button id="turnOn">ligar</button>
-            <button id="turnOff">Desligar</button>
+            <button id='turnOn'>Ligar</button>
+            <button id='turnOff'>DesLigar</button>
         </div>
     </section>
 </body>
 
-
 <script>
-      /*
-      isso são variaveis
-      */
+
     const turnOn = document.getElementById('turnOn');
     const turnOff = document.getElementById('turnOff');
     const lamp = document.getElementById('lamp');
-       /*
-       isso são variaveis
-       */
 
-    function isLampBroKen() {
+    function isLampBroken() {
         return lamp.src.indexOf('quebrada') > -1
     }
-     //erro d digitação
+
     function lampOn() {
-        if (!isLampBroKen()) {
+        if (!isLampBroken()) {
             lamp.src = './img/lamp_on.jpeg';
         }
     }
+
     function lampOff() {
-        lamp.src = './img/lamp_off.jpeg';
+        if (!isLampBroken()) {
+            lamp.src = './img/lamp_off.png.jpeg';
+        }
     }
 
-    function LampBroken() {
-        lamp.src = './img/lamp_broke.jpeg';
+    function lampBroken() {
+        lamp.src = '/img/lamp_broke.png.jpeg';
     }
+
     turnOn.addEventListener('click', lampOn);
     turnOff.addEventListener('click', lampOff);
     lamp.addEventListener('mouseover', lampOn);
     lamp.addEventListener('mouseleave', lampOff);
     lamp.addEventListener('dblclick', lampBroken);
-    
+
 
 </script>
 
 </html>
-
